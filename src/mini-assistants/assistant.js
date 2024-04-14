@@ -15,7 +15,7 @@ class Assistant {
     this.agentName = agentName;
     this.description = description;
     this.instructions = instructions;
-    this.llm = options.llm || true;
+    this.llm = options.llm !== undefined ? options.llm : true;
     if (this.llm) {
       this.model = options.model || "gpt-4-turbo";
       this.messages = [];
@@ -26,9 +26,8 @@ class Assistant {
   }
 
   async init() {
-    if (this.llm) {
-      this.assistant = await this.reCreate();
-    }
+    if (!this.llm) return;
+    this.assistant = await this.reCreate();
     for (const [_name, tool] of Object.entries(this.assistantsTools)) {
       await tool.init();
     }

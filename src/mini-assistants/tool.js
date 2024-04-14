@@ -10,7 +10,9 @@ class Tool extends Assistant {
   constructor(agentName, description, instructions, options = {}) {
     super(agentName, description, instructions, options);
     this.assistantsToolsPassOutputs =
-      options.assistantsToolsPassOutputs || false;
+      options.assistantsToolsPassOutputs !== undefined
+        ? options.assistantsToolsPassOutputs
+        : false;
     this.parentsTools = options.parentsTools || [];
   }
 
