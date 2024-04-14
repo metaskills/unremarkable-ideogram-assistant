@@ -1,0 +1,16 @@
+{
+  "name": "unremarkable-ideogram-assistant",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "assistant": "node src/index.js"
+  },
+  "dependencies": {
+    "dotenv-flow": "^3.2.0",
+    "openai": "^4.2.6"
+  },
+  "devDependencies": {
+    "prettier": "3.2.4"
+  }
+}
