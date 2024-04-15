@@ -23,9 +23,31 @@ class Thread {
     return this.thread.id;
   }
 
+  async toolThread(tool) {
+    let thread;
+    const threadKey = tool.toolName;
+    const threadID = this.thread.metadata[threadKey];
+    if (!threadID) {
+      thread = await Thread.create();
+      await this.addSubThread(threadKey, thread);
+    } else {
+      thread = await Thread.find(threadID);
+    }
+    return thread;
+  }
+
   async assistantMessageContent() {
     const message = await this.assistantMessage();
     return await message.assistantContent();
+  }
+
+  // Private (Lifecycle)
+
+  async addSubThread(threadKey, thread) {
+    this.thread.metadata[threadKey] = thread.id;
+    await openai.beta.threads.update(this.id, {
+      metadata: this.thread.metadata,
+    });
   }
 
   // Private

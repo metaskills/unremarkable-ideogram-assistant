@@ -9,6 +9,9 @@ class Tool extends Assistant {
 
   constructor(agentName, description, instructions, options = {}) {
     super(agentName, description, instructions, options);
+    this.isTool = true;
+    this.hasToolThread =
+      options.hasToolThread !== undefined ? options.hasToolThread : true;
     this.assistantsToolsPassOutputs =
       options.assistantsToolsPassOutputs !== undefined
         ? options.assistantsToolsPassOutputs

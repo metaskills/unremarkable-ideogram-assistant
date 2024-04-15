@@ -78,10 +78,7 @@ class Run {
           const toolCaller =
             this.assistant.assistantsTools[toolCall.function.name];
           if (toolCaller && typeof toolCaller.ask === "function") {
-            const output = await toolCaller.ask(
-              this.assistant.lastMessageContent,
-              functionArgs
-            );
+            const output = await toolCaller.ask(functionArgs, this.threadID);
             toolOutput.output = output;
             isToolOuputs = true;
           }
@@ -90,7 +87,7 @@ class Run {
         }
       }
       if (isToolOuputs) {
-        const output = await submitToolOutputs(toolOutputs);
+        const output = await this.submitToolOutputs(toolOutputs);
         return output;
       } else {
         return await this.thread.assistantMessageContent();
@@ -110,8 +107,8 @@ class Run {
         this.assistant.addAssistantsToolsOutputs(to.output);
       });
     }
-    this.run = await wait();
-    const output = await actions();
+    this.run = await this.wait();
+    const output = await this.actions();
     return output;
   }
 

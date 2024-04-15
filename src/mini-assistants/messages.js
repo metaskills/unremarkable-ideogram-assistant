@@ -3,9 +3,11 @@ import { openai } from "./openai.js";
 
 class Message {
   static async createForAssistant(asst, content, thread) {
+    const contentString =
+      typeof content === "string" ? content : JSON.stringify(content);
     const msg = await openai.beta.threads.messages.create(thread.id, {
       role: "user",
-      content: content,
+      content: contentString,
     });
     debug("💌 " + JSON.stringify(msg));
     const message = new Message(msg, thread);

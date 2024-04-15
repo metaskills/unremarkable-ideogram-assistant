@@ -54,7 +54,10 @@ class MagicPromptsTool extends Tool {
         },
       },
     ];
-    super(name, description, instructions, { parentsTools });
+    super(name, description, instructions, {
+      toolThread: true,
+      parentsTools: parentsTools,
+    });
   }
 }
 

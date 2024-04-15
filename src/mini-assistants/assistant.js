@@ -39,10 +39,6 @@ class Assistant {
     return this.assistant.id;
   }
 
-  get threadID() {
-    return this.thread.id;
-  }
-
   // Messages: Asking and access.
 
   async ask(message, threadID) {
@@ -87,7 +83,10 @@ class Assistant {
 
   async askAssistant(message, threadID) {
     this.clearAssistantsToolsOutputs();
-    const thread = await Thread.find(threadID);
+    let thread = await Thread.find(threadID);
+    if (this.isTool && this.hasToolThread) {
+      thread = await thread.toolThread(this);
+    }
     const _msg = await Message.createForAssistant(this, message, thread);
     const run = await Run.createForAssistant(this, thread);
     let output = await run.actions();
