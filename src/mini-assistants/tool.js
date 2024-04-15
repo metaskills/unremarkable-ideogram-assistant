@@ -2,9 +2,13 @@ import { Assistant } from "./assistant.js";
 
 class Tool extends Assistant {
   static get toolName() {
-    return this.name
+    let name = this.name
       .replace(/([A-Z])/g, (letter) => `_${letter.toLowerCase()}`)
       .slice(1);
+    if (name.endsWith("_tool")) {
+      name = name.slice(0, -5);
+    }
+    return name;
   }
 
   constructor(agentName, description, instructions, options = {}) {

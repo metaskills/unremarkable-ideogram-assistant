@@ -24,11 +24,12 @@ class MagicPromptsTool extends Tool {
                     subject: {
                       type: "string",
                       description:
-                        "Customer's needs of the concept. Ex: Blog title.",
+                        "Few words summarizing the customer's need for this concept.",
                     },
                     concept: {
                       type: "string",
-                      description: "Brief idea of the concept. Single sentence",
+                      description:
+                        "Brief idea of the concept. Single sentence.",
                     },
                     thinking: {
                       type: "string",

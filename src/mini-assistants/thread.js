@@ -1,4 +1,4 @@
-import { debug } from "./helpers.js";
+import { debug, isDebug } from "./helpers.js";
 import { openai } from "./openai.js";
 import { Message } from "./messages.js";
 
@@ -30,6 +30,10 @@ class Thread {
     if (!threadID) {
       thread = await Thread.create();
       await this.addSubThread(threadKey, thread);
+      if (isDebug) {
+        debug(`🪡 Udated Thread:`);
+        await Thread.find(this.id);
+      }
     } else {
       thread = await Thread.find(threadID);
     }

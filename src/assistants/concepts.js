@@ -1,7 +1,7 @@
 import { Assistant } from "../mini-assistants/assistant.js";
 import { readInstructions } from "../utils/instructions.js";
 import { MagicPromptsTool } from "../tools/magicPrompts.js";
-import { IdeogramTool } from "../tools/ideogram.js";
+import { IdeogramsTool } from "../tools/ideograms.js";
 
 class ConceptsAssistant extends Assistant {
   constructor() {
@@ -10,7 +10,7 @@ class ConceptsAssistant extends Assistant {
     const instructions = readInstructions("concepts.md");
     super(name, description, instructions);
     this.addAssistantTool(MagicPromptsTool);
-    this.addAssistantTool(IdeogramTool);
+    this.addAssistantTool(IdeogramsTool);
   }
 }
 

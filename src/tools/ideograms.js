@@ -1,7 +1,7 @@
 import { Tool } from "../mini-assistants/tool.js";
 import { readInstructions } from "../utils/instructions.js";
 
-class IdeogramTool extends Tool {
+class IdeogramsTool extends Tool {
   constructor() {
     const name = "unREMARKABLE Ideogram (Ideogram)";
     const description =
@@ -11,7 +11,7 @@ class IdeogramTool extends Tool {
       {
         type: "function",
         function: {
-          name: IdeogramTool.toolName,
+          name: IdeogramsTool.toolName,
           description: description,
           parameters: {
             type: "object",
@@ -42,9 +42,9 @@ class IdeogramTool extends Tool {
   }
 
   async ask(message, threadID) {
-    console.log("IdeogramTool ask");
+    console.log("IdeogramsTool ask");
     console.log("message", message);
   }
 }
 
-export { IdeogramTool };
+export { IdeogramsTool };

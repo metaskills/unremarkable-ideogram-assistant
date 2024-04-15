@@ -1,10 +1,10 @@
 
+* Do not take a break, just return the data.
+* Do not ask if you should do the ideograms, if you have done the magic prompts, you should do the ideograms.
+
 I really need something for an article about Ideogram & OpenAI Assistants
 
-Personal and Business automation is something that I really like about this post. I wonder where AI will be more useful and where the opportunities are.
-
-
-
+Personal and Business automation with AI is interesting. I wonder which has more commercial application. I tend to think about the automation capabilities using those two categories. For example, you are helping me automate this illustration work now.
 
 tell application "Safari"
     activate
@@ -17,4 +17,3 @@ tell application "System Events"
     delay 1
     keystroke return
 end tell
-
