@@ -1,49 +1,31 @@
 import { Tool } from "../mini-assistants/tool.js";
 import { readInstructions } from "../utils/instructions.js";
+import { MagicPromptsTool } from "./magicPrompts.js";
+import { OpenBrowserTool } from "./openBrowser.js";
+import { conceptsParameters } from "../utils/conceptsParameters.js";
 
 class IdeogramsTool extends Tool {
   constructor() {
-    const name = "unREMARKABLE Ideogram (Ideogram)";
+    const name = "unREMARKABLE Ideogram (Ideograms)";
     const description =
-      "Thur your illustration's magic prompts into images for the customer to review.";
-    const instructions = "";
+      "Using your creative concepts, create on-brand magic prompts and use them to open Ideogram in a browser.";
+    const instructions = readInstructions("ideograms.md");
     const parentsTools = [
       {
         type: "function",
         function: {
           name: IdeogramsTool.toolName,
           description: description,
-          parameters: {
-            type: "object",
-            properties: {
-              magic_prompts: {
-                type: "array",
-                items: {
-                  type: "object",
-                  properties: {
-                    content: {
-                      type: "string",
-                      description: "The magic prompt to send to Ideogram.",
-                    },
-                  },
-                  required: ["content"],
-                },
-              },
-            },
-            required: ["magic_prompts"],
-          },
+          parameters: conceptsParameters,
         },
       },
     ];
     super(name, description, instructions, {
-      llm: false,
       parentsTools: parentsTools,
+      ignoreLLMToolOutput: true,
     });
-  }
-
-  async ask(message, threadID) {
-    console.log("IdeogramsTool ask");
-    console.log("message", message);
+    this.addAssistantTool(MagicPromptsTool);
+    this.addAssistantTool(OpenBrowserTool);
   }
 }
 

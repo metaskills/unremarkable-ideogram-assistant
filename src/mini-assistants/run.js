@@ -74,11 +74,13 @@ class Run {
         debug("🪚  " + JSON.stringify(toolCall));
         if (toolCall.type === "function") {
           const toolOutput = { tool_call_id: toolCall.id };
-          const functionArgs = JSON.parse(toolCall.function.arguments);
           const toolCaller =
             this.assistant.assistantsTools[toolCall.function.name];
           if (toolCaller && typeof toolCaller.ask === "function") {
-            const output = await toolCaller.ask(functionArgs, this.threadID);
+            const output = await toolCaller.ask(
+              toolCall.function.arguments,
+              this.threadID
+            );
             toolOutput.output = output;
             isToolOuputs = true;
           }

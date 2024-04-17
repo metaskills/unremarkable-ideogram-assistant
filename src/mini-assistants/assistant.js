@@ -17,7 +17,7 @@ class Assistant {
     this.instructions = instructions;
     this.llm = options.llm !== undefined ? options.llm : true;
     if (this.llm) {
-      this.model = options.model || "gpt-4-turbo";
+      this.model = options.model || "gpt-3.5-turbo";
       this.messages = [];
       this.assistantsTools = {};
       this.assistantsToolsOutputs = [];
@@ -82,6 +82,7 @@ class Assistant {
   // Private
 
   async askAssistant(message, threadID) {
+    if (!this.llm) return;
     this.clearAssistantsToolsOutputs();
     let thread = await Thread.find(threadID);
     if (this.isTool && this.hasToolThread) {
@@ -90,8 +91,14 @@ class Assistant {
     const _msg = await Message.createForAssistant(this, message, thread);
     const run = await Run.createForAssistant(this, thread);
     let output = await run.actions();
-    if (this.isAssistantsToolsOutputs) {
-      output = formatToolOutputs(this.assistantsToolsOutputs);
+    if (this.isTool) {
+      if (this.llm && this.ignoreLLMToolOutput) {
+        output = "";
+      }
+    } else {
+      if (this.isAssistantsToolsOutputs) {
+        output = formatToolOutputs(this.assistantsToolsOutputs);
+      }
     }
     debug(`🤖 ${output}`);
     return output;

@@ -1,16 +1,17 @@
-import { debug, isDebug } from "./helpers.js";
+import { debug } from "./helpers.js";
 import { openai } from "./openai.js";
 import { Message } from "./messages.js";
 
 class Thread {
   static async find(threadID) {
     const thread = await openai.beta.threads.retrieve(threadID);
+    debug("🧵 Found: " + JSON.stringify(thread));
     return new Thread(thread);
   }
 
   static async create() {
     const thrd = await openai.beta.threads.create();
-    debug("🧵 " + JSON.stringify(thrd));
+    debug("🧵 Create: " + JSON.stringify(thrd));
     const thread = new Thread(thrd);
     return thread;
   }
@@ -23,17 +24,22 @@ class Thread {
     return this.thread.id;
   }
 
+  async addMetaData(key, value) {
+    this.thread.metadata[key] = value;
+    await openai.beta.threads.update(this.id, {
+      metadata: this.thread.metadata,
+    });
+    debug("🧵 Update: " + JSON.stringify(this.thread));
+  }
+
   async toolThread(tool) {
     let thread;
     const threadKey = tool.toolName;
     const threadID = this.thread.metadata[threadKey];
     if (!threadID) {
       thread = await Thread.create();
-      await this.addSubThread(threadKey, thread);
-      if (isDebug) {
-        debug(`🪡 Udated Thread:`);
-        await Thread.find(this.id);
-      }
+      await this.addMetaData(threadKey, thread.id);
+      await thread.addMetaData("tool", tool.agentName);
     } else {
       thread = await Thread.find(threadID);
     }
@@ -43,15 +49,6 @@ class Thread {
   async assistantMessageContent() {
     const message = await this.assistantMessage();
     return await message.assistantContent();
-  }
-
-  // Private (Lifecycle)
-
-  async addSubThread(threadKey, thread) {
-    this.thread.metadata[threadKey] = thread.id;
-    await openai.beta.threads.update(this.id, {
-      metadata: this.thread.metadata,
-    });
   }
 
   // Private
