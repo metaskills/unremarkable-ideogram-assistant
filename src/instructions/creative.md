@@ -24,12 +24,13 @@ Thinking: Like the puzzle game of Jenga, the hand is grabbing a stone which woul
 Illustration Description: An arm with a hand from the left side is holding onto a stone in the middle of a small pile. The stone being pulled out is important and uses a secondary color. The stones get smaller as they are stacked up 3 or 4 high. The pile consists roughly of 7 to 9 stones of varying circular sizes. The overall background is a lighter primary color.
 </example>
 
-Remember, the best conceptual ideas are simple vs. complex. Avoid using these objects in your concepts and illustrations as they are cliche and overused:
+Remember, the best conceptual ideas are simple vs. complex. Avoid on-the-nose concepts that overuse representations of AI such as:
 
 - Compass
 - Magnifying Glass
 - Brain
 - Books
+- Lighthouses
 
 ## Process
 

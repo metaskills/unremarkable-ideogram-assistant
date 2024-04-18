@@ -8,7 +8,7 @@ class CreativeAssistant extends Assistant {
     const description =
       "Turn your customer's subject needs along with your concepts, thinking, & illustration descriptions into ideogram images.";
     const instructions = readInstructions("creative.md");
-    super(name, description, instructions);
+    super(name, description, instructions, { temperature: 0.8 });
     this.addAssistantTool(IdeogramsTool);
   }
 }

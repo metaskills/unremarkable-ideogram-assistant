@@ -24,7 +24,7 @@ class OpenBrowserTool extends Tool {
                     prompt: {
                       type: "string",
                       description:
-                        "The Ideogram magic prompt to send to your browser.",
+                        "The Ideogram magic prompt to send to your browser. Single sentence, no backticks",
                     },
                   },
                   required: ["content"],
@@ -64,7 +64,7 @@ tell application "Safari"
     make new document
     set URL of document 1 to "https://ideogram.ai"
 end tell
-delay 3
+delay 2
 tell application "System Events"
     keystroke "${cleanedPrompt}"
     delay 1

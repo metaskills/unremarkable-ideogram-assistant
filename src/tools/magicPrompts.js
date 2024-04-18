@@ -19,6 +19,7 @@ class MagicPromptsTool extends Tool {
       },
     ];
     super(name, description, instructions, {
+      temperature: 0.8,
       parentsTools: parentsTools,
     });
   }

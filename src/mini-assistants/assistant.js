@@ -18,6 +18,8 @@ class Assistant {
     this.llm = options.llm !== undefined ? options.llm : true;
     if (this.llm) {
       this.model = options.model || "gpt-3.5-turbo";
+      this.temperature =
+        options.temperature !== undefined ? options.temperature : 0.1;
       this.messages = [];
       this.assistantsTools = {};
       this.assistantsToolsOutputs = [];
@@ -126,6 +128,7 @@ class Assistant {
       description: this.description,
       instructions: this.instructions,
       tools: this.tools,
+      temperature: this.temperature,
     });
     debug(`💁‍♂️ Created ${this.agentName} assistant ${assistant.id}...`);
     return assistant;
