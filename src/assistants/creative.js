@@ -1,4 +1,4 @@
-import { Assistant } from "../mini-assistants/assistant.js";
+import { Assistant } from "experts";
 import { readInstructions } from "../utils/instructions.js";
 import { IdeogramsTool } from "../tools/ideograms.js";
 

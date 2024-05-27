@@ -1,4 +1,4 @@
-import { Tool } from "../mini-assistants/tool.js";
+import { Tool } from "experts";
 import { readInstructions } from "../utils/instructions.js";
 import { conceptsParameters } from "../utils/conceptsParameters.js";
 

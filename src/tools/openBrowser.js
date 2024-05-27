@@ -1,4 +1,4 @@
-import { Tool } from "../mini-assistants/tool.js";
+import { Tool } from "experts";
 import { execSync } from "child_process";
 
 class OpenBrowserTool extends Tool {
@@ -42,7 +42,7 @@ class OpenBrowserTool extends Tool {
     });
   }
 
-  async ask(magicPromptsJSON, threadID) {
+  async ask(magicPromptsJSON) {
     const json = JSON.parse(magicPromptsJSON);
     for (const magicPrompt of json.magic_prompts) {
       await this.openBrowser(magicPrompt.prompt);

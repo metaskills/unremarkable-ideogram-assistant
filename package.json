@@ -4,12 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "assistant": "node src/index.js"
+    "assistant": "node src/index.js",
+    "assistant:debug": "DEBUG=1 node src/index.js"
   },
   "dependencies": {
     "@inquirer/prompts": "^5.0.0",
     "dotenv-flow": "^3.2.0",
-    "openai": "^4.37.0"
+    "experts": "^1.0.1",
+    "openai": "^4.47.1"
   },
   "devDependencies": {
     "prettier": "3.2.4"

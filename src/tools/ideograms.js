@@ -1,4 +1,4 @@
-import { Tool } from "../mini-assistants/tool.js";
+import { Tool } from "experts";
 import { readInstructions } from "../utils/instructions.js";
 import { MagicPromptsTool } from "./magicPrompts.js";
 import { OpenBrowserTool } from "./openBrowser.js";
@@ -22,7 +22,6 @@ class IdeogramsTool extends Tool {
     ];
     super(name, description, instructions, {
       parentsTools: parentsTools,
-      ignoreLLMToolOutput: true,
     });
     this.addAssistantTool(MagicPromptsTool);
     this.addAssistantTool(OpenBrowserTool);
