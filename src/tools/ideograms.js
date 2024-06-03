@@ -1,7 +1,6 @@
 import { Tool } from "experts";
 import { readInstructions } from "../utils/instructions.js";
 import { MagicPromptsTool } from "./magicPrompts.js";
-import { OpenBrowserTool } from "./openBrowser.js";
 import { conceptsParameters } from "../utils/conceptsParameters.js";
 
 class IdeogramsTool extends Tool {
@@ -24,7 +23,6 @@ class IdeogramsTool extends Tool {
       parentsTools: parentsTools,
     });
     this.addAssistantTool(MagicPromptsTool);
-    this.addAssistantTool(OpenBrowserTool);
   }
 }
 

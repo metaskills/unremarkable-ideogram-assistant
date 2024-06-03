@@ -10,7 +10,7 @@
   "dependencies": {
     "@inquirer/prompts": "^5.0.0",
     "dotenv-flow": "^3.2.0",
-    "experts": "^1.0.1",
+    "experts": "^1.0.2",
     "openai": "^4.47.1"
   },
   "devDependencies": {
