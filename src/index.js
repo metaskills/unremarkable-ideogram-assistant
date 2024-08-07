@@ -9,7 +9,7 @@ await thread.addMetaData("assistant", assistant.agentName);
 let userInput, assistantOutput;
 
 userInput =
-  process.env.MYIDEA ||
+  process.env.IDEA ||
   (await input({
     message: "How can I assist you today with your creative needs?\n📩",
   }));
