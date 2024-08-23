@@ -18,6 +18,6 @@ OPENAI_API_KEY=sk-...
 Now you can run the following commands:
 
 ```bash
-npm install
+./bin/setup
 npm run assistant
 ```

@@ -2,3 +2,4 @@
 .env.*
 !.env.development
 !.env.test
+.api

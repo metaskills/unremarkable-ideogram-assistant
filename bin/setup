@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+npm install
+
+cd .api/apis/ideogram
+npm pkg set type=module
+cd ../../..

@@ -1,6 +1,6 @@
 import { input } from "@inquirer/prompts";
 import { Thread } from "experts";
-import { CreativeAssistant } from "./assistants/creative.js";
+import { CreativeAssistant } from "./experts/creative.js";
 
 const thread = await Thread.create();
 const assistant = await CreativeAssistant.create();

@@ -1,6 +1,6 @@
 import { Assistant } from "experts";
 import { readInstructions } from "../utils/instructions.js";
-import { IdeogramTool } from "../tools/ideogram.js";
+import { IdeogramTool } from "./ideogram.js";
 
 class CreativeAssistant extends Assistant {
   constructor() {

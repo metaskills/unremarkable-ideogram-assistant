@@ -8,10 +8,13 @@
     "assistant:debug": "DEBUG=1 node src/index.js"
   },
   "dependencies": {
+    "@api/ideogram": "file:.api/apis/ideogram",
     "@inquirer/prompts": "^5.0.0",
     "dotenv-flow": "^3.2.0",
-    "experts": "^1.4.0",
-    "openai": "^4.54.0"
+    "experts": "^1.4.3",
+    "open": "^10.1.0",
+    "openai": "^4.56.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "prettier": "3.2.4"
