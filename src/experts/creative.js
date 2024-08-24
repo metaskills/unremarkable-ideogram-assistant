@@ -5,7 +5,7 @@ const { IllustratorTool } = require("./illustrator.js");
 class CreativeAssistant extends Assistant {
   constructor() {
     super({
-      name: "unREMARKABLE Ideogram (Creative)",
+      name: "unRemarkable.ai Ad Agency (Creative)",
       instructions: readInstructions("creative.md"),
       temperature: 0.1,
     });

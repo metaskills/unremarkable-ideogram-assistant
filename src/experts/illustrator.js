@@ -10,7 +10,7 @@ ideogram.auth(process.env.IDEOGRAM_API_KEY);
 class IllustratorTool extends Tool {
   constructor() {
     super({
-      name: "unREMARKABLE Ideogram (Illustrator)",
+      name: "unRemarkable.ai Ad Agency (Illustrator)",
       instructions: readInstructions("illustrator.md"),
       temperature: 0.1,
       parentsTools: [
@@ -23,36 +23,7 @@ class IllustratorTool extends Tool {
             parameters: {
               type: "object",
               properties: {
-                concept: {
-                  type: "object",
-                  properties: {
-                    subject: {
-                      type: "string",
-                      description:
-                        "Few words summarizing the customer's need for this concept.",
-                    },
-                    concept: {
-                      type: "string",
-                      description:
-                        "Brief idea of the concept. Single sentence.",
-                    },
-                    thinking: {
-                      type: "string",
-                      description:
-                        "Your detailed thinking thinking behind the concept.",
-                    },
-                    illustration_description: {
-                      type: "string",
-                      description: "Detailed description of the illustration.",
-                    },
-                  },
-                  required: [
-                    "subject",
-                    "concept",
-                    "thinking",
-                    "illustration_description",
-                  ],
-                },
+                concept: { type: "string" },
               },
               required: ["concept"],
             },
@@ -60,28 +31,26 @@ class IllustratorTool extends Tool {
         },
       ],
       response_format: zodResponseFormat(
-        z
-          .object({
-            magic_prompt: z.string(),
-          })
-          .describe("A single magic prompt with your illustration style."),
-        "magic_prompt"
+        z.object({ illustration_description: z.string() })
+         .describe("An concept that is now on-brand and fully described for an illustrator."),
+        "illustration_description"
       ),
     });
   }
 
   async answered(output) {
-    const magicPrompt = JSON.parse(output).magic_prompt;
-    const myIdeograms = await ideogram.post_generate_image({
+    const prompt = JSON.parse(output).illustration_description;
+    const ideograms = await ideogram.post_generate_image({
       image_request: {
-        prompt: magicPrompt,
+        prompt: prompt,
         magic_prompt_option: "OFF",
-        style_type: "DESIGN",
+        style_type: "GENERAL",
         resolution: "RESOLUTION_1312_736",
+        negative_prompt: "brush paint"
       },
     });
     const open = (await openImport).default;
-    for (const item of myIdeograms.data.data) {
+    for (const item of ideograms.data.data) {
       await open(item.url);
     }
     return "Success";
