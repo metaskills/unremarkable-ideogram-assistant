@@ -9,10 +9,11 @@ Article: https://www.unremarkable.ai/consistent-on-brand-artwork-using-ideogram-
 > [!WARNING]  
 > This project assumes you are on a Mac OS system with Safari.
 
-Ensure you have an `OPENAI_API_KEY` environment variable or add your OpenAI API key to the `.env.development.local` file:
+Ensure you have an `OPENAI_API_KEY` and `IDEOGRAM_API_KEY` environment variables or add them to the `.env.development.local` file:
 
 ```
-OPENAI_API_KEY=sk-...
+OPENAI_API_KEY=...
+IDEOGRAM_API_KEY=...
 ```
 
 Now you can run the following commands:

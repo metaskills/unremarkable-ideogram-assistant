@@ -1,6 +1,6 @@
-import { Assistant } from "experts";
-import { readInstructions } from "../utils/instructions.js";
-import { IdeogramTool } from "./ideogram.js";
+const { Assistant } = require("experts");
+const { readInstructions } = require("../utils/instructions.js");
+const { IllustratorTool } = require("./illustrator.js");
 
 class CreativeAssistant extends Assistant {
   constructor() {
@@ -9,8 +9,8 @@ class CreativeAssistant extends Assistant {
       instructions: readInstructions("creative.md"),
       temperature: 0.1,
     });
-    this.addAssistantTool(IdeogramTool);
+    this.addAssistantTool(IllustratorTool);
   }
 }
 
-export { CreativeAssistant };
+module.exports = { CreativeAssistant };

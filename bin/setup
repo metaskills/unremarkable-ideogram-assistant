@@ -2,7 +2,4 @@
 set -e
 
 npm install
-
-cd .api/apis/ideogram
-npm pkg set type=module
-cd ../../..
+npx api install "@ideogram/v1.0#s9822m04148te"

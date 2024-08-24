@@ -1,5 +1,5 @@
-import fs from "fs";
-import env from "../env.js";
+const fs = require("fs");
+const env = require("../env.js");
 
 const readInstructions = (fileName) => {
   const filePath = env.projectPath(`src/instructions/${fileName}`);
@@ -7,4 +7,4 @@ const readInstructions = (fileName) => {
   return template;
 };
 
-export { readInstructions };
+module.exports = { readInstructions };
