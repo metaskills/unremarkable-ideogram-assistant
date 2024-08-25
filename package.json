@@ -1,6 +1,6 @@
 {
   "name": "unremarkable-ideogram-assistant",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "assistant": "node src/index.js",
@@ -10,7 +10,7 @@
     "@api/ideogram": "file:.api/apis/ideogram",
     "@inquirer/prompts": "^5.0.0",
     "dotenv-flow": "^3.2.0",
-    "experts": "^1.5.3",
+    "experts": "^1.5.4",
     "open": "^10.1.0",
     "openai": "^4.56.0",
     "zod": "^3.23.8"
